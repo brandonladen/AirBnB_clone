@@ -13,7 +13,7 @@ class HBNBCommand(cmd.Cmd):
         """does nothing when an empythline is entered"""
         pass
 
-    def do_quit(sef, arg):
+    def do_quit(self, arg):
         """quit command to exit the program"""
         return True
 
