@@ -46,5 +46,3 @@ EOF  all  create  destroy  help  quit  show  update
 ## Authors
 * Brandon Odhiambo (https://github.com/brandonladen)
 *  Cynthia Kiptum (https://github.com/Cindyjeby)
-
-<p align="center"><img src="http://www.holbertonschool.com/holberton-logo.png" alt="ALX"></p>
