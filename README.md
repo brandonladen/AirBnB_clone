@@ -2,7 +2,7 @@
 <p align="center"><img src="bnb.png" alt="AirBnb  logo"></p>
 
 ## Descreption:
-The console is the first segment of the AirBnB project at Holberton School that will collectively cover fundamental concepts of higher level programming. The goal of AirBnB project . This the first part of it the console( command line interepteur)
+The console is the first segment of the AirBnB project at ALX Africa that will collectively cover fundamental concepts of higher level programming. The goal of AirBnB project . This the first part of it the console( command line interepteur)
 
 ## Installation
 * Clone This Repo `git clone https://github.com/brandonladen/AirBnB_clone.git`
