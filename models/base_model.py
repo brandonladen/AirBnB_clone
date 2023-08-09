@@ -8,15 +8,13 @@ class BaseModel:
     """
         Defines all common attributes for other classes
     """
-    def __init__(self, name=None, my_number=None):
+    def __init__(self, *args, **kwargs):
         """
             Constructor of class BaseModel
         """
         self.id = str(uuid.uuid4())
         self.created_at = datetime.datetime.now()
         self.updated_at = self.created_at
-        self.name = name
-        self.my_number = my_number
 
     def save(self):
         """
