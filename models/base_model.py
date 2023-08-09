@@ -12,9 +12,17 @@ class BaseModel:
         """
             Constructor of class BaseModel
         """
-        self.id = str(uuid.uuid4())
-        self.created_at = datetime.datetime.now()
-        self.updated_at = self.created_at
+        if len(kwargs) == 0:
+            self.id = str(uuid.uuid4())
+            self.created_at = datetime.datetime.now()
+            self.updated_at = self.created_at
+        else:
+            for key , value in kwargs.items():
+                if key != '__class__':
+                    if key == 'created_at' or key == 'updated_at':
+                        setattr(self, key, datetime.datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f"))
+                    else:
+                        setattr(self, key, value)
 
     def save(self):
         """
@@ -26,7 +34,11 @@ class BaseModel:
         """
             returns a dictionary containing all keys/values of __dict__ of the instance
         """
-        return {"my_number": self.my_number, "name": self.name, "updated_at": self.updated_at.isoformat(), "id": self.id, "created_at": self.created_at.isoformat()}
+        dict_copy = self.__dict__.copy()
+        dict_copy['updated_at'] = self.updated_at.isoformat()
+        dict_copy['created_at'] = self.created_at.isoformat()
+        dict_copy['__class__'] = self.__class__.__name__
+        return dict_copy
 
     def __str__(self):
         """
