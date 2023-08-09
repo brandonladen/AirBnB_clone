@@ -7,13 +7,14 @@ import models
 from models.base_model import BaseModel
 from datetime import datetime
 from shlex import shlex
+from models.user import User
 
 """entry point for hbnb console"""
 
 class HBNBCommand(cmd.Cmd):
     """creates a custom command line"""
     prompt = '(hbnb) '
-    classlist = {'BaseModel': BaseModel}
+    classlist = {'BaseModel': BaseModel, 'User': User}
 
     def emptyline(self):
         """does nothing when an empythline is entered"""
