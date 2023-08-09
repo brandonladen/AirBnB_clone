@@ -74,6 +74,18 @@ class HBNBCommand(cmd.Cmd):
                 del models.storage.all()[i]
                 models.storage.save()
 
+    def do_all(self, arg):
+        """prints the string rep of all instances,
+        either based on the provided class name or for all classes"""
+        if not arg:
+            print([str(s) for i, s in models.storage.all().items])
+        else:
+            if not self.classlist.get(arg):
+                print("** class doesn\'t exist **")
+                return False
+            print([str(s) for i, s in models.storage.all().items()
+                   if type(s) is self.classlist.get(arg)])
+
     def do_quit(self, arg):
         """quit command to exit the program"""
         return True
