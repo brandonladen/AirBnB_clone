@@ -5,7 +5,7 @@
 The console is the first segment of the AirBnB project at Holberton School that will collectively cover fundamental concepts of higher level programming. The goal of AirBnB project . This the first part of it the console( command line interepteur)
 
 ## Installation
-* Clone This Repo `git clone https://github.com/salahbesbes/AirBnB_clone.git`
+* Clone This Repo `git clone https://github.com/brandonladen/AirBnB_clone.git`
 * Access AirBnb directory: `cd AirBnB_clone`
 * Run hbnb(interactively): `./console` and enter command
 * Run hbnb(non-interactively): `echo "<command>" | ./console.py`
