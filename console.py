@@ -19,7 +19,9 @@ from models.review import Review
 class HBNBCommand(cmd.Cmd):
     """creates a custom command line"""
     prompt = '(hbnb) '
-    classlist = {'BaseModel': BaseModel, 'User': User}
+    classlist = {'BaseModel': BaseModel, 'User': User, 'State': State,
+                 'City': city, 'Amenity': Amenity, 'Place': Place,
+                 'Review': Review,}
 
     def emptyline(self):
         """does nothing when an empythline is entered"""
