@@ -107,31 +107,32 @@ class HBNBCommand(cmd.Cmd):
             objid = args[1]
         if len(args) > 2:
             attrname = args[2]
-            if len(args) > 3:
-                attrval = list(shlex(arg[3]))[0].strip('"')
-            if not classname:
-                print('** class name missing **')
-            elif not objid:
-                print('** instance id missing **')
-            elif not attrname:
-                print('** attribute name missing **')
-            elif not attrval:
-                print('** value missing **')
-            elif not self.classlist.get(classname):
-                print('**class doen\'t exist')
+        if len(args) > 3:
+            attrval = list(shlex(arg[3]))[0].strip('"')
+        if not classname:
+            print('** class name missing **')
+        elif not objid:
+            print('** instance id missing **')
+        elif not attrname:
+             print('** attribute name missing **')
+        elif not attrval:
+            print('** value missing **')
+        elif not self.classlist.get(classname):
+            print('**class doen\'t exist')
+        else:
+            i = classname + "." + objid
+            obj = models.storage.all().get(i)
+            if not obj:
+                print('** no instance found **')
             else:
-                i = classname + "." + objid
-                obj = models.storage.all().get(i)
-                if not obj:
-                    print('** no instance found **')
-                else:
-                    if hasattr(obj, attrname):
-                        attrval = type(getattr(obj, attrname))(attrval)
-                    else:
-                        attrval = self.getType(attrval)(attrval)
-                        setattr(obj, attrname, attrval)
-                        obj.update_at = updatetime
-                        models.storage.save()
+                if hasattr(obj, attrname):
+                    if type(getattr(obj, attrname)) == int:
+                        attrval = int(attrval)
+                    elif type(getattr(obj, attrval)) == float:
+                        attrval = float(attrval)
+                    setattr(obj, attrname, attrval)
+                    obj.updated_at = updatetime
+                    models.storage.save()
 
     def do_quit(self, arg):
         """quit command to exit the program"""
