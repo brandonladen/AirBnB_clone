@@ -126,13 +126,15 @@ class HBNBCommand(cmd.Cmd):
                 print('** no instance found **')
             else:
                 if hasattr(obj, attrname):
-                    if type(getattr(obj, attrname)) == int:
+                    attr_type = type(getattr(obj, attrname))
+                    if attr_type == int:
                         attrval = int(attrval)
-                    elif type(getattr(obj, attrval)) == float:
+                    elif attr_type == float:
                         attrval = float(attrval)
                     setattr(obj, attrname, attrval)
                     obj.updated_at = updatetime
                     models.storage.save()
+                    print('attribute updated sucessfully')
 
     def do_quit(self, arg):
         """quit command to exit the program"""
