@@ -94,47 +94,7 @@ class HBNBCommand(cmd.Cmd):
                 print("** class doesn\'t exist **")
                 return False
             print([str(s) for i, s in models.storage.all().items()
-                   if type(s) is self.classlist.get(arg)])
-            
-    def do_update(self, arg):
-        """Updates an instance bsed on the classname and id"""
-        classname, objid, attrname, attrval = None, None, None, None
-        updatetime = datetime.now()
-        args = arg.split(' ', 3)
-        if len(args) > 0:
-            classname = args[0]
-        if len(args) > 1:
-            objid = args[1]
-        if len(args) > 2:
-            attrname = args[2]
-        if len(args) > 3:
-            attrval = list(shlex(arg[3]))[0].strip('"')
-        if not classname:
-            print('** class name missing **')
-        elif not objid:
-            print('** instance id missing **')
-        elif not attrname:
-             print('** attribute name missing **')
-        elif not attrval:
-            print('** value missing **')
-        elif not self.classlist.get(classname):
-            print('**class doen\'t exist')
-        else:
-            i = classname + "." + objid
-            obj = models.storage.all().get(i)
-            if not obj:
-                print('** no instance found **')
-            else:
-                if hasattr(obj, attrname):
-                    attr_type = type(getattr(obj, attrname))
-                    if attr_type == int:
-                        attrval = int(attrval)
-                    elif attr_type == float:
-                        attrval = float(attrval)
-                    setattr(obj, attrname, attrval)
-                    obj.updated_at = updatetime
-                    models.storage.save()
-                    print('attribute updated sucessfully')
+                   if type(s) is self.classlist.get(arg)])   
 
     def do_count(self, arg):
         """retrieves the number of instances of a class"""
