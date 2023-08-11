@@ -107,8 +107,10 @@ class HBNBCommand(cmd.Cmd):
             objid = args[1]
         if len(args) > 2:
             attrname = args[2]
+            print("This is the attribute name:", attrname)
         if len(args) > 3:
-            attrval = list(shlex(arg[3]))[0].strip('"')
+            #attrval = list(shlex(arg[3]))[0].strip('"')
+            attrval = arg.split('"', 2)[1]
         if not classname:
             print('** class name missing **')
         elif not objid:
@@ -135,6 +137,11 @@ class HBNBCommand(cmd.Cmd):
                     obj.updated_at = updatetime
                     models.storage.save()
                     print('attribute updated sucessfully')
+                else:
+                    print("An error occured, Please try again")
+                    print(obj)
+                    print("-----")
+                    print(attrname, attrval)
 
     def do_quit(self, arg):
         """quit command to exit the program"""
