@@ -143,6 +143,19 @@ class HBNBCommand(cmd.Cmd):
                     print("-----")
                     print(attrname, attrval)
 
+    def do_count(self, arg):
+        """retrieves the number of instances of a class"""
+        args = arg.split(' ')
+        if not args:
+            print("** class name missing **")
+            return
+        classname = args[0]
+        count = 0
+        for obj in models.storage.all().values():
+            if classname[0] == type(obj).__name__:
+                count += 1
+        print(count)
+
     def do_quit(self, arg):
         """quit command to exit the program"""
         return True
