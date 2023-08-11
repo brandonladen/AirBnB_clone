@@ -107,7 +107,6 @@ class HBNBCommand(cmd.Cmd):
             objid = args[1]
         if len(args) > 2:
             attrname = args[2]
-            print("This is the attribute name:", attrname)
         if len(args) > 3:
             #attrval = list(shlex(arg[3]))[0].strip('"')
             attrval = arg.split('"', 2)[1]
@@ -138,10 +137,10 @@ class HBNBCommand(cmd.Cmd):
                     models.storage.save()
                     print('attribute updated sucessfully')
                 else:
-                    print("An error occured, Please try again")
-                    print(obj)
-                    print("-----")
-                    print(attrname, attrval)
+                    setattr(obj, attrname, attrval)
+                    obj.updated_at = updatetime
+                    models.storage.save()
+                    print('New attribute created and instance updated')
 
     def do_count(self, arg):
         """retrieves the number of instances of a class"""
