@@ -3,6 +3,7 @@
 
 from models.base_model import BaseModel
 
+
 class Amenity(BaseModel):
     """is a child of class BaseModel"""
     name = ""
@@ -10,3 +11,4 @@ class Amenity(BaseModel):
     def __init__(self, *args, **kwargs):
         """Init"""
         super().__init__(*args, **kwargs)
+        
