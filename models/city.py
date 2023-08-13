@@ -4,6 +4,7 @@
 
 from models.base_model import BaseModel
 
+
 class City(BaseModel):
     """child class of the BaseModel
     it has 2 attributes - state id and name of the city"""
@@ -14,3 +15,4 @@ class City(BaseModel):
     def __init__(self, *args, **kwargs):
         """Init"""
         super().__init__(*args, **kwargs)
+        

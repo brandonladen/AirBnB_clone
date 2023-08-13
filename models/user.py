@@ -3,6 +3,7 @@
 
 from models.base_model import BaseModel
 
+
 class User(BaseModel):
     """is a child class of BaseModel"""
     email = ""
@@ -13,3 +14,4 @@ class User(BaseModel):
     def __init__(self, *args, **kwargs):
         """Init"""
         super().__init__(*args, **kwargs)
+        

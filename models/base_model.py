@@ -20,23 +20,24 @@ class BaseModel:
             models.storage.new(self)
             models.storage.save()
         else:
-            for key , value in kwargs.items():
+            for key, value in kwargs.items():
                 if key != '__class__':
                     if key == 'created_at' or key == 'updated_at':
-                        setattr(self, key, datetime.datetime.strptime(value, "%Y-%m-%dT%H:%M:%S.%f"))
+                        setattr(self, key, datetime.datetime.strptime(
+                            value, "%Y-%m-%dT%H:%M:%S.%f"))
                     else:
                         setattr(self, key, value)
 
     def save(self):
         """
-            updates the public instance attribute updated_at with the current datetime
+            updates the public instance attribute updated_at
         """
         self.updated_at = datetime.datetime.now()
         models.storage.save()
 
     def to_dict(self):
         """
-            returns a dictionary containing all keys/values of __dict__ of the instance
+            returns a dictionary
         """
         dict_copy = self.__dict__.copy()
         dict_copy['updated_at'] = self.updated_at.isoformat()
@@ -48,4 +49,6 @@ class BaseModel:
         """
             String information of the BaseModel
         """
-        return "[{}] ({}) {}".format(self.__class__.__name__, self.id, self.__dict__)
+        return "[{}] ({}) {}".\
+            format(self.__class__.__name__, self.id, self.__dict__)
+    

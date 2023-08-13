@@ -3,6 +3,7 @@
 
 from models.base_model import BaseModel
 
+
 class Review(BaseModel):
     """Is a child class of BaseModel class"""
     place_id = ""
@@ -12,3 +13,4 @@ class Review(BaseModel):
     def __init__(self, *args, **kwargs):
         """Init"""
         super().__init__(*args, **kwargs)
+        
