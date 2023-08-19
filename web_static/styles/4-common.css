@@ -13,6 +13,7 @@ p{
     max-width: 1000px;
     margin: 30px auto;
     display: flex;
+    flex-direction: column; /* Added this to make Place start its new row*/
     align-items: center;
     justify-content: center;
 }
