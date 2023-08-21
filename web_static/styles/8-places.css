@@ -8,6 +8,7 @@
     line-height: 60px; /* Center the text vertically */
     position: relative;
     right: -90px;
+    margin-bottom: 10px;
 }
 article{
     display: flex;
@@ -69,4 +70,11 @@ article{
 .user{
     margin-top: 20px;
     margin-bottom: 10px;
+}
+.head-sec{
+    display: flex;
+    justify-content: center;
+}
+.places h2{
+    margin-top: 0;
 }
